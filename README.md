@@ -1,2 +1,2 @@
 # japanese-character-classification
-![](data/idea.png)
+![](pictures/idea.png)
