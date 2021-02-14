@@ -17,24 +17,24 @@ def load_data(subfolder="train"):
         subfolder - "train" oder "test". Default: "train"
     """
     
-    # Initialisierung Dictionary und Listen
+    # initialize dictionary and lists
     character_files = {}
     all_characters = []
     all_files = []
     
-    # Dateien im Verzeichnis suchen
+    # search files in path
     def find_files(path):
         return glob.glob(path)
     
     for filename in find_files("data/"+subfolder+"/*csv"):
-        # Zeichen aus Dateiname extrahieren
+        # get character from filename
         character = os.path.splitext(os.path.basename(filename))[0][0]
         
-        # Sammeln der gefunden Zeichen in Liste
+        # collect all characters
         if (character in all_characters) == False:
             all_characters.append(character)
         
-        # Erweiterung der Listen im Dictionary für entsprechenden Key
+        # expand lists in dictionary for character (key)
         character_files.setdefault(character, []).append(filename)
     
     return character_files, all_characters
@@ -53,40 +53,38 @@ def file_to_tensor(file, batch=1, input_size=3):
         input_size - the number of expected features in the input x
     """
     
-    # Listen für Beschleunigungswerte
+    # initialize lists for acceleration data
     x_acc = []
     y_acc = []
     z_acc = []
 
     with open(file, newline="") as csvdatei:
-        # Einlesen der Zeilen als String in Liste
+        # add rows as string to list
         csv_reader_object = csv.reader(csvdatei, delimiter=",")
 
-        # Ground Truth und Identifier
+        # ground truth and identifier
         gt, idf = csvdatei.name.split("__")
-        # Ground Truth = letztes Zeichen
+        # ground truth = last character
         gt = gt[-1]
-        #print("Ground Truth: {}".format(gt))
-        # Identifier ohne ".csv" als Integer
+        # identifier without ".csv" as integer
         idf = int(idf[0:-4])
-        #print("Identifier: {}".format(idf))
         
-        # Listen mit Beschleunigungswerte füllen
+        # append list with acceleration data
         for row in csv_reader_object:
-            kal, x, y, z = row[0].split(";")
-            # Bei kal = 1 --> Kalibierung abgeschlossen
-            if kal == "1":
+            cal, x, y, z = row[0].split(";")
+            # cal = 1 --> calibration completed
+            if cal == "1":
                 x_acc.append(float(x))
                 y_acc.append(float(y))
                 z_acc.append(float(z))
                 
-        # Sequenzlänge bestimmen
+        # get sequence length
         seq_len = len(x_acc)
         
-        # Tensor erstellen
+        # create empty tensor
         tensor = torch.zeros(seq_len, batch, input_size, dtype=torch.float32)
         
-        # Tensor füllen
+        # fill tensor
         for i in range(seq_len):
             tensor[i][0][0] = x_acc[i]
             tensor[i][0][1] = y_acc[i]
@@ -108,11 +106,11 @@ def character_to_tensor(all_characters, character):
         character - character that will be one-hot encoded
     """
     
-    # Anzahl aller Charaktere/ Zeichen
+    # number of all characters
     n_characters = len(all_characters)
-    # Leeren Tensor erstellen
+    # create empty tensor
     tensor = torch.zeros(1, n_characters)
-    # Kennzeichnung des Charakters im Tensor
+    # label of character in tensor
     tensor[0][all_characters.index(character)] = 1
     
     return tensor
@@ -132,18 +130,18 @@ def random_training_example(character_files, all_characters):
         all_characters - list with all characters     
     """
     
-    # Auswahl eines zufälligen Wertes aus Liste
+    # get random value from list
     def random_choice(a):
         random_idx = random.randint(0, len(a) - 1)
         return a[random_idx]
         
-    # Zufälliger Charakter
+    # random character
     character = random_choice(all_characters)
-    # Zufällige Datei des Charakters
+    # random file from selected character
     file = random_choice(character_files[character])
-    # Label als Tensor; dtype = 64-bit integer
+    # label as tensor; dtype = 64-bit integer
     character_tensor = torch.tensor([all_characters.index(character)], dtype=torch.long)
-    # Umwandlung file in Tensor
+    # transformation file to tensor
     file_tensor = file_to_tensor(file)
     
     return character, file, character_tensor, file_tensor
