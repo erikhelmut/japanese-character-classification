@@ -17,10 +17,9 @@ def load_data(subfolder="train"):
         subfolder - "train" oder "test". Default: "train"
     """
     
-    # initialize dictionary and lists
+    # initialize dictionary and list
     character_files = {}
     all_characters = []
-    all_files = []
     
     # search files in path
     def find_files(path):
@@ -36,6 +35,9 @@ def load_data(subfolder="train"):
         
         # expand lists in dictionary for character (key)
         character_files.setdefault(character, []).append(filename)
+
+    # sort list
+    all_characters.sort()
     
     return character_files, all_characters
         
