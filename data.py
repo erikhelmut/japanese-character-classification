@@ -50,7 +50,7 @@ def file_to_tensor(file, batch=1, input_size=3):
     Returns a tensor of shape (seq_len, batch, input_size).
     
     Keywords:
-        file - e.g. "data/train\\a__02621.csv"
+        file - e.g. "data/train\a__02621.csv"
         batch - total number of training examples present in a single batch
         input_size - the number of expected features in the input x
     """
