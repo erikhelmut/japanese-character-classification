@@ -21,11 +21,8 @@ def load_data(subfolder="train"):
     character_files = {}
     all_characters = []
     
-    # search files in path
-    def find_files(path):
-        return glob.glob(path)
-    
-    for filename in find_files("data/"+subfolder+"/*csv"):
+    # iterate over files in path
+    for filename in glob.glob("data/"+subfolder+"/*csv"):
         # get character from filename
         character = os.path.splitext(os.path.basename(filename))[0][0]
         
@@ -118,6 +115,23 @@ def character_to_tensor(all_characters, character):
     return tensor
     
     
+def random_choice(a):
+
+    """
+    random_choice(a) --> random Value
+
+    Returns a random value from a given list.
+
+    Keywords:
+        a - list filled values (e.g. integers, strings, etc.) 
+    """
+
+    # get random value from list
+    random_idx = random.randint(0, len(a) - 1)
+
+    return a[random_idx]
+
+    
 def random_training_example(character_files, all_characters):
     
     """
@@ -131,11 +145,6 @@ def random_training_example(character_files, all_characters):
             a list with file-paths as values
         all_characters - list with all characters     
     """
-    
-    # get random value from list
-    def random_choice(a):
-        random_idx = random.randint(0, len(a) - 1)
-        return a[random_idx]
         
     # random character
     character = random_choice(all_characters)
