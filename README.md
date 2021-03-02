@@ -3,9 +3,9 @@
 
 <!-- ## About The Project
 
-### Buid With
+### Buid With -->
 
-## Contact -->
+## Contact 
 
 Erik Helmut <br>
 [erik.helmut1@gmail.com](mailto:erik.helmut1@gmail.com)
