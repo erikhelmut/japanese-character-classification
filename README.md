@@ -7,4 +7,4 @@
 
 ## Contact 
 
-Erik Helmut <p> &#8210 </p> [erik.helmut1@gmail.com](mailto:erik.helmut1@gmail.com)
+Erik Helmut <p> &#8210; </p> [erik.helmut1@gmail.com](mailto:erik.helmut1@gmail.com)
