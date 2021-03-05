@@ -1,7 +1,8 @@
 # japanese-character-classification
 
-<p align="center">
-    <img src="https://img.shields.io/badge/Contact-grey?style=for-the-badge&logo=gmail&link=mailto:erik.helmut1@gmail.com">
+<p align="left">
+    <a href="mailto:erik.helmut1@gmail.com">
+        <img src="https://img.shields.io/badge/Contact-grey?style=for-the-badge&logo=gmail">
 </p>
 
 ![Idea](pictures/idea.png)
