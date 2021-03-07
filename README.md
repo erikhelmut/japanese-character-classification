@@ -16,7 +16,10 @@ Using [LSTM Networks](http://colah.github.io/posts/2015-08-Understanding-LSTMs/)
 
 ## How to run the code
 
+Windows PowerShell:
+
 ```
+cd japanese-character-classification
 python -m venv venv
 venv\Scripts\Activate.ps1
 pip install -r requirements.txt
