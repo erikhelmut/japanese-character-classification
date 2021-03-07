@@ -19,6 +19,7 @@ Using [LSTM Networks](http://colah.github.io/posts/2015-08-Understanding-LSTMs/)
 Windows PowerShell:
 
 ```
+git clone https://github.com/erikhelmut/japanese-character-classification.git
 cd japanese-character-classification
 python -m venv venv
 venv\Scripts\Activate.ps1
