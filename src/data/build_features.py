@@ -6,7 +6,7 @@ import torch
 import random
 
 
-def load_data(path="data/train/"):
+def load_data(path="data/train"):
     
     """
     load_data() -> Dictionary, List
@@ -23,7 +23,7 @@ def load_data(path="data/train/"):
     all_characters = []
     
     # iterate over files in path
-    for filename in glob.glob(path+"*csv"):
+    for filename in glob.glob(path+"/*csv"):
         # get character from filename
         character = os.path.splitext(os.path.basename(filename))[0][0]
         
