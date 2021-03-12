@@ -6,7 +6,7 @@ import torch
 import random
 
 
-def load_data(path="data/train"):
+def load_data(path="data/train/"):
     
     """
     load_data() -> Dictionary, List
