@@ -4,6 +4,8 @@
 <p align="left">
     <a href="https://github.com/erikhelmut">
         <img src="https://img.shields.io/badge/GitHub-28a745?style=flat&logo=github" height="25" /></a>
+    <a href="https://colab.research.google.com/github/erikhelmut/japanese-character-classification">
+        <img src="https://img.shields.io/badge/Colab-orange?style=flat&logo=google-colab" height="25" /></a>
     <a href="mailto:erik.helmut1@gmail.com">
         <img src="https://img.shields.io/badge/Contact-737373?style=flat&logo=gmail" height="25" /></a>
     <a href="https://www.linkedin.com/in/erikhelmut">
