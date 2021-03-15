@@ -1,1 +1,1 @@
-__all__ = ["load_data", "file_to_tensor", "character_to_tensor", "random_training_example"]
+__all__ = ["load_data", "file_to_tensor", "character_to_tensor", "random_choice", "random_training_example"]
